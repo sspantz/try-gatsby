@@ -1,10 +1,33 @@
 {
   "name": "try-gatsby",
   "version": "0.0.1",
-  "description": "try gatsby by going through official tutorial and some examples.",
-  "main": "src/index.js",
+  "description": "try gatsby by going through official tutorials and some examples.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "commit": "git-cz",
+    "validate": "npm-run-all --parallel format test:cover",
+    "test": "jest src",
+    "test:cover": "jest src --coverage",
+    "test:watch": "jest src --watch"
+  },
+  "dependencies": {
+    "gatsby": "^2.18.8",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "commitizen": "4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "ghooks": "2.0.4",
+    "jest": "24.9.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "^1.19.1",
+    "validate-commit-msg": "2.14.0"
   },
   "repository": {
     "type": "git",
@@ -15,5 +38,14 @@
   "bugs": {
     "url": "https://github.com/sspantz/try-gatsby/issues"
   },
-  "homepage": "https://github.com/sspantz/try-gatsby#readme"
+  "homepage": "https://github.com/sspantz/try-gatsby#readme",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "ghooks": {
+      "pre-commit": "yarn run validate",
+      "commit-msg": "validate-commit-log"
+    }
+  }
 }
