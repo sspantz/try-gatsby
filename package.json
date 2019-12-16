@@ -1,0 +1,19 @@
+{
+  "name": "try-gatsby",
+  "version": "0.0.1",
+  "description": "try gatsby by going through official tutorial and some examples.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sspantz/try-gatsby.git"
+  },
+  "author": "sspantz <sspantiezheng@gmail.com> (https://sspantz.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sspantz/try-gatsby/issues"
+  },
+  "homepage": "https://github.com/sspantz/try-gatsby#readme"
+}
