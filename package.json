@@ -45,7 +45,7 @@
     },
     "ghooks": {
       "pre-commit": "yarn run validate",
-      "commit-msg": "validate-commit-log"
+      "commit-msg": "validate-commit-msg"
     }
   }
 }
