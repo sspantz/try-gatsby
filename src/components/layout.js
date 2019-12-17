@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
@@ -14,42 +14,55 @@ const ListLink = props => (
   </li>
 )
 
-export default ({ children }) => (
-  <div
-    css={css`
-      margin: 0 auto;
-      max-width: 700px;
-      padding: ${rhythm(2)};
-      padding-top: ${rhythm(1.5)};
-    `}
-  >
-    <header
+export default ({ children }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    <div
       css={css`
-        margin-bottom: 1.5rem;
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
       `}
     >
-      <Link to="/">
-        <h3
-          css={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline;
-            font-style: normal;
-          `}
-        >
-          MySweetSite
-        </h3>
-      </Link>
-      <ul
+      <header
         css={css`
-          list-style: none;
-          float: right;
+          margin-bottom: 1.5rem;
         `}
       >
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about/">About</ListLink>
-        <ListLink to="/contact/">Contact</ListLink>
-      </ul>
-    </header>
-    {children}
-  </div>
-)
+        <Link to="/">
+          <h3
+            css={css`
+              margin-bottom: ${rhythm(2)};
+              display: inline;
+              font-style: normal;
+            `}
+          >
+            {data.site.siteMetadata.title}
+          </h3>
+        </Link>
+        <ul
+          css={css`
+            list-style: none;
+            float: right;
+          `}
+        >
+          <ListLink to="/">Home</ListLink>
+          <ListLink to="/about/">About</ListLink>
+          <ListLink to="/contact/">Contact</ListLink>
+        </ul>
+      </header>
+      {children}
+    </div>
+  )
+}
