@@ -1,52 +1,68 @@
 import React from "react"
-import { Link } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
+import { css } from "@emotion/core"
+import { rhythm } from "../utils/typography"
 
 const ListLink = props => (
   <li
-    style={{
-      display: `inline-block`,
-      marginRight: `1rem`,
-    }}
+    css={css`
+      display: inline-block;
+      margin-right: 1rem;
+    `}
   >
     <Link to={props.to}>{props.children}</Link>
   </li>
 )
-export default ({ children }) => (
-  <div
-    style={{
-      color: `teal`,
-      margin: `3rem auto`,
-      maxWidth: 700,
-      padding: `0 1rem`,
-    }}
-  >
-    <header style={{ marginBottom: `1.5rem` }}>
-      <Link
-        to="/"
-        style={{
-          textShadow: `none`,
-          backgroundImage: `none`,
-        }}
+
+export default ({ children }) => {
+  const data = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+          }
+        }
+      }
+    `
+  )
+  return (
+    <div
+      css={css`
+        margin: 0 auto;
+        max-width: 700px;
+        padding: ${rhythm(2)};
+        padding-top: ${rhythm(1.5)};
+      `}
+    >
+      <header
+        css={css`
+          margin-bottom: 1.5rem;
+        `}
       >
-        <h3
-          style={{
-            display: `inline`,
-          }}
+        <Link to="/">
+          <h3
+            css={css`
+              margin-bottom: ${rhythm(2)};
+              display: inline;
+              font-style: normal;
+            `}
+          >
+            {data.site.siteMetadata.title}
+          </h3>
+        </Link>
+        <ul
+          css={css`
+            list-style: none;
+            float: right;
+          `}
         >
-          MySweetSite
-        </h3>
-      </Link>
-      <ul
-        style={{
-          listStyle: `none`,
-          float: `right`,
-        }}
-      >
-        <ListLink to="/">Home</ListLink>
-        <ListLink to="/about/">About</ListLink>
-        <ListLink to="/contact/">Contact</ListLink>
-      </ul>
-    </header>
-    {children}
-  </div>
-)
+          <ListLink to="/">Home</ListLink>
+          <ListLink to="/about/">About</ListLink>
+          <ListLink to="/contact/">Contact</ListLink>
+        </ul>
+      </header>
+      {children}
+    </div>
+  )
+}
