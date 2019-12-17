@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 
 export default () => (
   <Layout>
-    <Link to="/">Home</Link>
     <Header headerText="Contact" />
     <p> Send us a message!</p>
   </Layout>

@@ -5,7 +5,6 @@ import Layout from "../components/layout"
 
 export default () => (
   <Layout>
-    <Link to="/contact/">Contact</Link>
     <Header headerText="Hello Gatsby"></Header>
     <h1>Hi, I'm building a fake Gatsby site as part of a tutorial</h1>
     <p>What a world.</p>
