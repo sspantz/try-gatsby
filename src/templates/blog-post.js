@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 export default ({ data }) => {
   const post = data.markdownRemark
@@ -10,6 +10,7 @@ export default ({ data }) => {
         <h1>{post.frontmatter.title}</h1>
         <h4>{post.frontmatter.date}</h4>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Link to="/">&larr; Back</Link>
       </div>
     </Layout>
   )
