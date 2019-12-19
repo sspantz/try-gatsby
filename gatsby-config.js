@@ -8,6 +8,8 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: `Sweet Pandas`,
+    description: `A simple description about pandas eating lots...`,
+    author: `sspantz`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
@@ -25,6 +27,7 @@ module.exports = {
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-typography`,
