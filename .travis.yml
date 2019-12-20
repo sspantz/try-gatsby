@@ -18,5 +18,4 @@ jobs:
         provider: script
         cleanup: false
         script:
-          - npm run validate
           - npx semantic-release
