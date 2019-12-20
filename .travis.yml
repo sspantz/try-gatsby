@@ -4,6 +4,9 @@ node_js:
   - 12
   - 10
 
+os:
+  linux
+
 jobs:
   include:
     # Define the release stage that runs semantic-release
@@ -13,6 +16,7 @@ jobs:
       # script: skip
       deploy:
         provider: script
-        skip_cleanup: true
+        cleanup: false
         script:
+          - npm run validate
           - npx semantic-release
